@@ -1,0 +1,23 @@
+[PROJECT]
+Target=TCC.hex
+Processor_Text=PIC18F4550
+CCSVersion=5.007
+Compiler=PCH
+[Target Data]
+FileList=TCC.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;D:\2 - Engenharia Elétrica - UFT\TCC\Programa\
+[TCC.c]
+Type=4
+[mru-list]
+1=TCC.c
+[Opened Files]
+1=TCC.c
+2=
+3=
+[ExtraIncludes]
+Count=0
+1=tcc=c:\users\daniel santos\desktop\projeto paralelo\ds1307.c
+[Units]
+Count=1
+1=TCC (main)

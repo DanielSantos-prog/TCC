@@ -1,0 +1,126 @@
+#include<18f4550.h> //inclusão da biblioteca do PIC
+
+#fuses INTRC // função que habilita oscilador interno
+#fuses NOWDT   //Sem Watch dog, evitando reset
+#fuses NOPROTECT  //Codigo sem proteção de leitura, software livre!
+#fuses NODEBUG  //No Debug mode for ICD
+
+#device ADC=10
+
+#use delay(clock=8000000) // define o clock como 8MHz
+
+//define as portas para LCD
+#define LCD_ENABLE_PIN  PIN_E0                                    
+#define LCD_RS_PIN      PIN_E1                                    
+#define LCD_RW_PIN      PIN_E2                                    
+#define LCD_DATA4       PIN_B4                                    
+#define LCD_DATA5       PIN_B5                                    
+#define LCD_DATA6       PIN_B6                                    
+#define LCD_DATA7       PIN_B7 
+
+#include<lcd.c> // inclui biblioteca LCD
+#include<stdio.h> // Inclui o modo de entrada e saida do c
+
+char temperature[] = " 00.0 C";
+unsigned int16 temp;
+
+float Valor_lido,tensao,tensao2,tensao3;
+// Variável acrescentada
+int16 leitura_adc;
+
+void ImprimiMenu(char temperature, float tensao,float tensao2, float tensao3);
+
+
+
+void ImprimiMenu(char temperature, float tensao,float tensao2, float tensao3)
+{
+    printf(lcd_putc,"\f");
+    lcd_gotoxy(1,1);
+    printf(lcd_putc,"Info:  ");
+    lcd_gotoxy(7, 1);                            
+    printf(lcd_putc, temperature); 
+    delay_ms(100);
+    lcd_gotoxy(1,2);
+    printf(lcd_putc,"Fase1:%.1fV 10A",tensao);
+    delay_ms(100);
+    lcd_gotoxy(17,1);
+    printf(lcd_putc,"Fase2:%.1fV 10A",tensao2);
+    delay_ms(100);
+    lcd_gotoxy(17,2);
+    printf(lcd_putc,"Fase3:%.1fV 10A",tensao3);
+    delay_ms(100);
+    
+      
+      
+     
+} 
+
+
+
+
+int main()
+{
+   
+   setup_adc(ADC_CLOCK_INTERNAL);                 // ADC Module uses its internal oscillator
+   setup_adc_ports(AN0_to_AN3);                          // Configure AN0 pin as analog
+    
+   
+  
+   lcd_init();//inicia LCD
+  
+ 
+  
+   
+   
+   
+   while(true)
+   {
+      set_adc_channel(0);
+      delay_us(20);
+      temp = read_adc() * 0.489;                   // Read analog voltage and convert it to degree celsius (0.489 = 500/1023)
+      if (temp > 99)
+         temperature[0]  = 1 + 48;                  // Put 1 (of hundred)
+      else
+         temperature[0]  = ' ';                     // Put space
+      temperature[1]  = (temp / 10) % 10  + 48;
+      temperature[2]  =  temp % 10  + 48;
+      temperature[5] = 223; 
+      
+      set_adc_channel(1);
+        
+      leitura_adc=read_adc();
+      
+      //Conversão de tipo de variável (Nunca acredite em AJUSTE DE TIPO automático)
+      Valor_lido=(float)leitura_adc; 
+      tensao=((Valor_lido)/1023) ; 
+      
+      set_adc_channel(2);
+      
+      leitura_adc=read_adc();
+      
+      //Conversão de tipo de variável (Nunca acredite em AJUSTE DE TIPO automático)
+      Valor_lido=(float)leitura_adc; 
+      tensao2=((Valor_lido*5*60)/1023)+1 ;
+      
+      set_adc_channel(3);
+   
+      leitura_adc=read_adc();
+      
+      //Conversão de tipo de variável (Nunca acredite em AJUSTE DE TIPO automático)
+      Valor_lido=(float)leitura_adc; 
+      tensao3=((Valor_lido*5*60)/1023)+1 ; 
+       
+      ImprimiMenu(temperature,tensao,tensao2,tensao3);
+      delay_ms(200);
+   }
+return 0;
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,189 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-050 days_of_week
+051-052 @sprintf_string
+053-054 strtok.save
+055-05C temperature
+05D-05E temp
+05F-062 Valor_lido
+063-066 tensao
+067-06A tensao2
+06B-06E tensao3
+06F-072 corrente
+073-076 corrente2
+077-07A corrente3
+07B-07C leitura_adc
+07D     ImprimiMenu.temperature
+07D-080 @SFTOI.P1
+07D     lcd_init.i
+07D-080 @FLT.P1
+07D     MAIN.@SCRATCH1
+07E-081 ImprimiMenu.tensao
+07E     lcd_init.@SCRATCH1
+07E     MAIN.@SCRATCH2
+07F-080 @DIV1616.P1
+07F-080 @ITOF.P2
+07F     MAIN.@SCRATCH3
+080     MAIN.@SCRATCH4
+081-082 @DIV1616.P1
+081-084 @ADDFF.P2
+081-084 @FLT.P3
+081-084 @DIVFF.P4
+082-085 ImprimiMenu.tensao2
+083     @DIV1616.@SCRATCH1
+085-088 @ADDFF.P1
+085-088 @DIVFF.P2
+085     @FLT.@SCRATCH1
+086-089 ImprimiMenu.tensao3
+086     @FLT.@SCRATCH2
+089     @DIVFF.@SCRATCH1
+089     @ADDFF.@SCRATCH1
+08A-08D ImprimiMenu.corrente
+08A     @DIVFF.@SCRATCH2
+08A     @ADDFF.@SCRATCH2
+08B     @DIVFF.@SCRATCH3
+08B     @ADDFF.@SCRATCH3
+08C     @DIVFF.@SCRATCH4
+08C     @ADDFF.@SCRATCH4
+08D     @DIVFF.@SCRATCH5
+08D     @ADDFF.@SCRATCH5
+08E-091 ImprimiMenu.corrente2
+08E     @DIVFF.@SCRATCH6
+08E     @ADDFF.@SCRATCH6
+08F     @ADDFF.@SCRATCH7
+090     @ADDFF.@SCRATCH8
+092-095 ImprimiMenu.corrente3
+096-099 @PRINTF_L32D_715FPFPF.P1
+096     @PSTRINGCN_715.P2
+096     @PSTRINGC_715.@SCRATCH1
+096     @PSTRINGR_715.@SCRATCH1
+097     @PSTRINGC_715.@SCRATCH2
+097     @PSTRINGR_715.@SCRATCH2
+097     @PSTRINGCN_715.@SCRATCH1
+098     @PSTRINGCN_715.@SCRATCH2
+09A     @PRINTF_L32D_715FPFPF.P1
+09B     @PRINTF_L32D_715FPFPF.@SCRATCH1
+09C     @PRINTF_L32D_715FPFPF.@SCRATCH2
+09D     @PRINTF_L32D_715FPFPF.@SCRATCH3
+09E     @PRINTF_L32D_715FPFPF.@SCRATCH4
+09F     @PRINTF_L32D_715FPFPF.@SCRATCH5
+0A0     @PRINTF_L32D_715FPFPF.@SCRATCH6
+0A1     @PRINTF_L32D_715FPFPF.@SCRATCH7
+0A2     @PRINTF_L32D_715FPFPF.@SCRATCH8
+0A3-0A6 @MULFF.P1
+0A3     lcd_putc.c
+0A3-0A6 @FTOSD.P1
+0A3-0A6 @DIV3232.P2
+0A4     lcd_gotoxy.x
+0A4     @delay_ms1.P1
+0A5     lcd_gotoxy.y
+0A6     lcd_gotoxy.address
+0A7-0AA @MULFF.P1
+0A7-0AA @DIV3232.P2
+0A7     lcd_gotoxy.@SCRATCH1
+0A7     @FTOSD.@SCRATCH1
+0A8     lcd_send_byte.address
+0A9     lcd_send_byte.n
+0AA     lcd_read_byte.low
+0AA     lcd_send_byte.@SCRATCH1
+0AB     lcd_send_nibble.n
+0AB     lcd_read_byte.high
+0AB     @MULFF.@SCRATCH1
+0AB     @DIV3232.@SCRATCH1
+0AC     lcd_read_nibble.n
+0AC     lcd_read_byte.@SCRATCH1
+0AC     @MULFF.@SCRATCH2
+0AC     @DIV3232.@SCRATCH2
+0AD     lcd_read_nibble.@SCRATCH1
+0AD     @MULFF.@SCRATCH3
+0AD     @DIV3232.@SCRATCH3
+0AE     @DIV3232.@SCRATCH4
+0AF     @DIV3232.@SCRATCH5
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1
+FBE     CCP_1_LOW
+FBF     CCP_1_HIGH
+FE1-FE2 @READ_PACKED_MEMORY.P1
+FE1-FE2 @WRITE_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FE9-FEA @READ_PACKED_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P1
+FF6-FF8 @READ_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  LCD_INIT_STRING.call
+000014  LCD_INIT_STRING.data
+000018  @const841.call
+000020  @const844.call
+000030  @const858.call
+000040  @const859.call
+000050  @delay_ms1
+000076  lcd_send_nibble
+0000B6  lcd_read_nibble
+000108  lcd_read_byte
+000152  lcd_send_byte
+000198  lcd_init
+000206  @ITOF
+00023C  @MULFF
+00032E  @SFTOI
+000368  @DIV1616
+0003AA  @DIVFF
+000504  @ADDFF
+00076E  @FLT
+0007E4  lcd_gotoxy
+000806  lcd_putc
+000856  @PSTRINGC_715
+000878  @PSTRINGR_715
+00089E  @PSTRINGCN_715
+0008BC  @FTOSD
+0008FC  @DIV3232
+00098A  @PRINTF_L32D_715FPFPF
+000B02  ImprimiMenu
+000C6A  @cinit1
+000C6A  MAIN
+000C94  @cinit2
+
+Project Directory:
+    D:\2 - Engenharia Elétrica - UFT\TCC\Programa\
+
+Project Files:
+    TCC.c                                                   [12-fev-20 23:16  CRC=E544E059]
+    C:\Program Files (x86)\PICC\Devices\18f4550.h           [21-jun-13 16:05  CRC=A157EDDE]
+    C:\Program Files (x86)\PICC\Drivers\lcd.c               [23-ago-12 09:01  CRC=D28E8746]
+    C:\Program Files (x86)\PICC\Drivers\stdio.h             [31-jul-07 13:24  CRC=4E4534F4]
+    C:\Program Files (x86)\PICC\Drivers\string.h            [14-jul-11 10:13  CRC=23EDEC8F]
+    C:\Program Files (x86)\PICC\Drivers\stddef.h            [16-jul-10 09:27  CRC=897CEC6C]
+    C:\Program Files (x86)\PICC\Drivers\ctype.h             [03-jan-08 13:55  CRC=2D1F019F]
+
+Source signature=0309434A
+
+Units:
+    TCC (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   TCC.xsym
+    Errors:      TCC.err
+    Ext Symbols: TCC.esym
+    INHX32:      TCC.hex
+    Symbols:     TCC.sym
+    List:        TCC.lst
+    Debug/COFF:  TCC.cof
+    Project:    
