@@ -14,3 +14,7 @@ Notas do que está sendo feito.
 		-1 GSM: R$170,00  
 
 2 - Existe possibilidade de ligar o Pic com o Escada?
+
+3 - Baixar Visual Studio e programar o PIC na USB
+
+
